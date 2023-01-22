@@ -1,0 +1,37 @@
+--Create an store database
+
+CREATE TABLE ClickMart (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, reviews INTEGER, stock INTEGER);
+
+INSERT INTO Clickmart VALUES
+(1, 'pop sockets', 3, 123, 54),
+(2, 'fidget spinners', 5, 199, 27),
+(3, 'slime', 7, 77, 98),
+(4, 'book light', 12, 34, 121),
+(5, 'book mark', 2, 58, 113),
+(6, 'charger', 14, 56, 24),
+(7, 'usb cord', 9, 88,43),
+(8, 'mouse', 19, 78, 87),
+(9, 'usb hub', 22, 57, 19),
+(10, 'water bottle', 18, 22, 67),
+(11, 'desk fan', 14, 49, 34),
+(12, 'mini-fridge', 45, 19, 29),
+(13, 'hand warmer', 8, 38, 20),
+(14, 'foot massager', 90, 9, 23),
+(15, 'scalp massager', 12, 99, 93);
+
+
+--Show all items and order by price
+
+SELECT *
+FROM ClickMart ORDER BY price;
+
+--Show the value of the current in stock items
+
+SELECT SUM(price * stock) as Potential_Profit
+FROM ClickMart;
+
+--What most reviewed items are almost out of stock?
+
+SELECT name AS REORDER, stock 
+FROM ClickMart WHERE reviews >= 50 AND stock <20
+ORDER BY reviews;
