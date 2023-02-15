@@ -1,0 +1,39 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE singers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    album TEXT,
+    country TEXT,
+    genre_id INTEGER);
+    
+INSERT INTO singers (id, name, album, country, genre_id) VALUES ( "1", "Adele", "Fire", "UK", "3");
+
+INSERT INTO singers (id, name, album, country, genre_id) VALUES ( "2", "Machine Gun Kelly", "Tickets To My Downfall ", "USA", "1");
+
+INSERT INTO singers (id, name, album, country, genre_id) VALUES ( "3", "blackbear", "Everything Means Nothing", "USA", "2");
+
+INSERT INTO singers (id, name, album, country, genre_id) VALUES ( "4", "5 Seconds of Summer", "13 Reasons Why", "USA", "3");
+
+INSERT INTO singers (id, name, album, country, genre_id) VALUES ( "5", "Silversun Pickups", "Swoon", "UK", "2");
+
+INSERT INTO singers (id, name, album, country, genre_id) VALUES ( "6", "Ellie Goulding", "Peace is the Misson", "UK", "3");
+
+CREATE TABLE genres (
+ id INTEGER PRIMARY KEY,
+ genre_type TEXT,
+ similar_to TEXT);
+ 
+INSERT INTO genres (id, genre_type, similar_to) VALUES ( "1", "Rock", "Alternative");
+
+INSERT INTO genres (id, genre_type, similar_to) VALUES ( "2", "Alternative", "Rock");
+
+INSERT INTO genres (id, genre_type, similar_to) VALUES ( "3", "Pop", "KPop");
+
+INSERT INTO genres (id, genre_type, similar_to) VALUES ( "4", "KPop", "Pop");
+
+SELECT name, country, genre_type, similar_to AS may_enjoy
+FROM singers
+JOIN genres
+ON singers.genre_id=genres.id
+WHERE country = 'UK';
